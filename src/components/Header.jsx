@@ -1,13 +1,13 @@
 // components/Header.jsx
 import React from "react";
 
-const Header = ({ onMenuClick }) => {
+const Header = ({ sidebarOpen, setSidebarOpen }) => {
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="flex items-center justify-between px-6 py-4">
         <div className="flex items-center">
           <button
-            onClick={onMenuClick}
+            onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 rounded-lg hover:bg-gray-100 mr-4"
           >
             <svg

@@ -14,12 +14,6 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
         <h1 className={`text-xl font-bold duration-300 ${sidebarOpen ? "opacity-100" : "opacity-0"}`}>
           Admin
         </h1>
-        <button
-          className="p-2 rounded-md hover:bg-gray-200"
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-        >
-          <FaBars />
-        </button>
       </div>
 
       <nav className="flex-1 mt-4">
@@ -35,5 +29,6 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
         ))}
       </nav>
     </div>
+
   );
 }
