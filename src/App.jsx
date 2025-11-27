@@ -9,6 +9,7 @@ import EarningsReportCard from "./components/card/EarningsReportCard";
 import GeneratedLeadsCard from "./components/card/GeneratedLeadsCard";
 import TransactionsCard from "./components/card/TransactionsCard";
 import ClientPaymentsCard from "./components/card/ClientPaymentsCard";
+import RecentPaymentsCard from "./components/card/RecentPaymentsCard";
 import MonthlySalesCard from "./components/card/MonthlySalesCard";
 import "./App.css";
 
@@ -51,12 +52,14 @@ function App() {
             <ProfitCard />
             <ExpenseCard />
             <GeneratedLeadsCard />
-
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
             <TransactionsCard />
             <MonthlySalesCard/>
           </div>
-          <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
             <ClientPaymentsCard />
+            <RecentPaymentsCard />
           </div>
         </main>
       </div>
