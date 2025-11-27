@@ -10,6 +10,7 @@ import GeneratedLeadsCard from "./components/card/GeneratedLeadsCard";
 import TransactionsCard from "./components/card/TransactionsCard";
 import ClientPaymentsCard from "./components/card/ClientPaymentsCard";
 import MonthlySalesCard from "./components/card/MonthlySalesCard";
+import MostSoldProductsCard from "./components/card/MostSoldProductsCard";
 import "./App.css";
 
 function App() {
@@ -53,10 +54,11 @@ function App() {
             <GeneratedLeadsCard />
 
             <TransactionsCard />
-            <MonthlySalesCard/>
+            <MonthlySalesCard />
           </div>
           <div>
             <ClientPaymentsCard />
+            <MostSoldProductsCard />
           </div>
         </main>
       </div>
