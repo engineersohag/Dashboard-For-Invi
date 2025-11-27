@@ -1,89 +1,39 @@
-// components/Sidebar.jsx
 import React from "react";
+import { FaTachometerAlt, FaEnvelope, FaShoppingCart, FaBars } from "react-icons/fa";
 
-const Sidebar = ({ activePage, setActivePage, isOpen }) => {
+export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const menuItems = [
-    {
-      category: "DASHBOARDS",
-      items: [
-        { id: "dashboard", name: "Dashboard", icon: "📊", completed: false },
-      ],
-    },
-    {
-      category: "APPS & PAGES",
-      items: [
-        { id: "email", name: "Email", icon: "📧", completed: true },
-        { id: "chat", name: "Chat", icon: "💬", completed: false },
-        { id: "calendar", name: "Calendar", icon: "📅", completed: false },
-        { id: "kanban", name: "Kanban", icon: "📋", completed: false },
-        { id: "ecommerce", name: "eCommerce", icon: "🛒", completed: false },
-      ],
-    },
-    {
-      category: "ECOMMERCE",
-      items: [
-        { id: "products", name: "Products", icon: "📦", completed: false },
-        { id: "orders", name: "Orders", icon: "📝", completed: false },
-        { id: "customers", name: "Customers", icon: "👥", completed: false },
-        { id: "reviews", name: "Manage Reviews", icon: "⭐", completed: false },
-      ],
-    },
+    { name: "Dashboard", icon: <FaTachometerAlt /> },
+    { name: "Email", icon: <FaEnvelope /> },
+    { name: "E-commerce", icon: <FaShoppingCart /> },
   ];
 
   return (
-    <div
-      className={`${
-        isOpen ? "w-64" : "w-20"
-      } bg-gray-900 text-white transition-all duration-300 flex flex-col`}
-    >
-      {/* Logo */}
-      <div className="p-6 border-b border-gray-700">
-        {isOpen ? (
-          <h1 className="text-xl font-bold text-white">Vuexy</h1>
-        ) : (
-          <div className="text-center text-xl">V</div>
-        )}
+    <div className="flex flex-col h-full">
+      <div className="flex items-center justify-between p-4 border-b">
+        <h1 className={`text-xl font-bold duration-300 ${sidebarOpen ? "opacity-100" : "opacity-0"}`}>
+          Admin
+        </h1>
+        <button
+          className="p-2 rounded-md hover:bg-gray-200"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          <FaBars />
+        </button>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-4">
-        {menuItems.map((section, index) => (
-          <div key={index} className="mb-6">
-            {isOpen && (
-              <h3 className="text-xs uppercase text-gray-400 font-semibold mb-3">
-                {section.category}
-              </h3>
-            )}
-
-            <ul className="space-y-1">
-              {section.items.map((item) => (
-                <li key={item.id}>
-                  <button
-                    onClick={() => setActivePage(item.id)}
-                    className={`w-full flex items-center px-3 py-2 rounded-lg transition-colors ${
-                      activePage === item.id
-                        ? "bg-purple-600 text-white"
-                        : "text-gray-300 hover:bg-gray-800"
-                    }`}
-                  >
-                    <span className="text-lg mr-3">{item.icon}</span>
-                    {isOpen && (
-                      <>
-                        <span className="flex-1 text-left">{item.name}</span>
-                        {item.completed && (
-                          <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                        )}
-                      </>
-                    )}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <nav className="flex-1 mt-4">
+        {menuItems.map((item, index) => (
+          <a
+            key={index}
+            href="#"
+            className="flex items-center p-4 hover:bg-gray-200 rounded-lg transition-colors"
+          >
+            <span className="text-lg">{item.icon}</span>
+            {sidebarOpen && <span className="ml-3">{item.name}</span>}
+          </a>
         ))}
       </nav>
     </div>
   );
-};
-
-export default Sidebar;
+}

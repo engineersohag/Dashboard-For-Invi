@@ -1,9 +1,6 @@
-
 import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import Dashboard from "./pages/Dashboard";
-import Email from "./pages/Email";
 import WelcomeCard from "./components/card/WelcomeCard";
 import Statistics from "./components/card/Statistics";
 import ProfitCard from "./components/card/ProfitCard";
@@ -13,32 +10,37 @@ import GeneratedLeadsCard from "./components/card/GeneratedLeadsCard";
 import TransactionsCard from "./components/card/TransactionsCard";
 
 function App() {
-  const [activePage, setActivePage] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const renderPage = () => {
-    switch (activePage) {
-      case "dashboard":
-        return <Dashboard />;
-      case "email":
-        return <Email />;
-      case "ecommerce":
-        return <Ecommerce />;
-      default:
-        return <Dashboard />;
-    }
-  };
-
   return (
+    <div className="flex min-h-screen bg-gray-100">
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-      <WelcomeCard />
-      <Statistics />
-      <ProfitCard />
-      <ExpenseCard />
-      <GeneratedLeadsCard />
-      <EarningsReportCard />
-      <TransactionsCard />
+      {/* Sidebar */}
+      <div className={`${sidebarOpen ? "w-64" : "w-20"} bg-white shadow-lg duration-300`}>
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+
+        {/* Header */}
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+        {/* Content Area */}
+        <main className="p-6 flex-1 overflow-y-auto space-y-6">
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <WelcomeCard />
+            <Statistics />
+            <ProfitCard />
+            <ExpenseCard />
+            <GeneratedLeadsCard />
+            <EarningsReportCard />
+            <TransactionsCard />
+          </div>
+        </main>
+
+      </div>
     </div>
   );
 }
