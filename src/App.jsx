@@ -11,6 +11,7 @@ import TransactionsCard from "./components/card/TransactionsCard";
 import ClientPaymentsCard from "./components/card/ClientPaymentsCard";
 import RecentPaymentsCard from "./components/card/RecentPaymentsCard";
 import MonthlySalesCard from "./components/card/MonthlySalesCard";
+import MostSoldProductsCard from "./components/card/MostSoldProductsCard";
 import "./App.css";
 
 function App() {
@@ -59,7 +60,10 @@ function App() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
             <ClientPaymentsCard />
-            <ClientPaymentsCard />
+            <RecentPaymentsCard />
+          </div>
+          <div>
+            <MostSoldProductsCard />
           </div>
         </main>
       </div>
