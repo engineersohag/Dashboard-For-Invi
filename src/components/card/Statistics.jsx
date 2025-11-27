@@ -26,8 +26,8 @@ export default function StatisticsCard() {
             </svg>
           </div>
           <div>
-            <p className="text-xl font-semibold">230k</p>
-            <p className="text-sm text-gray-500">Sales</p>
+            <p className="text-xl font-semibold">0.00 (৳)</p>
+            <p className="text-sm text-gray-500">Opening Balance</p>
           </div>
         </div>
 
@@ -50,8 +50,8 @@ export default function StatisticsCard() {
             </svg>
           </div>
           <div>
-            <p className="text-xl font-semibold">8.549k</p>
-            <p className="text-sm text-gray-500">Customers</p>
+            <p className="text-xl font-semibold">5,342.00 (৳)</p>
+            <p className="text-sm text-gray-500">Receive</p>
           </div>
         </div>
 
@@ -74,8 +74,8 @@ export default function StatisticsCard() {
             </svg>
           </div>
           <div>
-            <p className="text-xl font-semibold">1.423k</p>
-            <p className="text-sm text-gray-500">Products</p>
+            <p className="text-xl font-semibold">0.00 (৳)</p>
+            <p className="text-sm text-gray-500">Expense</p>
           </div>
         </div>
 
@@ -98,8 +98,8 @@ export default function StatisticsCard() {
             </svg>
           </div>
           <div>
-            <p className="text-xl font-semibold">$9745</p>
-            <p className="text-sm text-gray-500">Revenue</p>
+            <p className="text-xl font-semibold">5,342.00 (৳)</p>
+            <p className="text-sm text-gray-500">Balance</p>
           </div>
         </div>
       </div>
