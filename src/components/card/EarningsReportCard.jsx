@@ -1,74 +1,99 @@
 import React from "react";
+import { FaChartLine, FaDollarSign, FaCreditCard } from "react-icons/fa";
+
 
 export default function EarningsReportCard() {
-  const chartData = [30, 90, 50, 35, 130, 60, 95];
+  const chartData = [
+    { day: "Mo", sales: 30, collection: 25 },
+    { day: "Tu", sales: 90, collection: 80 },
+    { day: "We", sales: 50, collection: 65 },
+    { day: "Th", sales: 35, collection: 40 },
+    { day: "Fr", sales: 130, collection: 120 },
+    { day: "Sa", sales: 60, collection: 70 },
+    { day: "Su", sales: 95, collection: 100 },
+  ];
+
+  const stats = [
+    {
+      title: "Net Profit",
+      subtitle: "12.4k Sales",
+      value: "$1,619",
+      trend: "▲ 18.6%",
+      icon: <FaChartLine />,
+      iconBg: "bg-purple-100",
+      iconColor: "text-purple-600",
+    },
+    {
+      title: "Total Income",
+      subtitle: "Sales, Affiliation",
+      value: "$3,571",
+      trend: "▲ 39.6%",
+      icon: <FaDollarSign />,
+      iconBg: "bg-green-100",
+      iconColor: "text-green-600",
+    },
+    {
+      title: "Total Expenses",
+      subtitle: "ADVT, Marketing",
+      value: "$430",
+      trend: "▲ 52.8%",
+      icon: <FaCreditCard />,
+      iconBg: "bg-gray-100",
+      iconColor: "text-gray-500",
+    },
+  ];
 
   return (
-    <div className="bg-white rounded-2xl shadow p-6">
-      <h2 className="text-xl font-semibold">Earning Reports</h2>
-      <p className="text-gray-500 text-sm">Weekly Earnings Overview</p>
+    <div className="bg-white rounded-2xl shadow-lg p-6 w-full hover:shadow-xl transition-shadow duration-300">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b pb-4 mb-6">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800">Sales VS Collection</h2>
+          <p className="text-gray-500 text-sm mt-1">
+            Weekly overview of sales and collection
+          </p>
+        </div>
+        <button className="mt-3 md:mt-0 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm transition">
+          View Details
+        </button>
+      </div>
 
-      {/* 3 Info Rows */}
-      <div className="mt-6 space-y-5">
-        {/* Row 1 */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-500 text-xl">⏱</span>
+      {/* Stats Row */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {stats.map((stat, idx) => (
+          <div
+            key={idx}
+            className="flex items-center flex-col gap-3 bg-gray-50 p-5 rounded-xl text-center"
+          >
+            <div
+              className={`p-4 rounded-lg flex items-center justify-center ${stat.iconBg}`}
+            >
+              <span className={`text-2xl ${stat.iconColor}`}>{stat.icon}</span>
+            </div>
             <div>
-              <p className="font-semibold">Net Profit</p>
-              <p className="text-gray-400 text-sm">12.4k Sales</p>
+              <h3 className="text-lg font-semibold text-gray-800">{stat.value}</h3>
+              <p className="text-gray-500 text-sm">{stat.subtitle}</p>
+              <p className="text-green-500 text-sm font-medium mt-1">{stat.trend}</p>
             </div>
           </div>
-          <div className="text-right">
-            <p className="font-semibold">$1,619</p>
-            <p className="text-green-500 text-sm">▲ 18.6%</p>
-          </div>
-        </div>
-
-        {/* Row 2 */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-green-500 text-xl">$</span>
-            <div>
-              <p className="font-semibold">Total Income</p>
-              <p className="text-gray-400 text-sm">Sales, Affiliation</p>
-            </div>
-          </div>
-          <div className="text-right">
-            <p className="font-semibold">$3,571</p>
-            <p className="text-green-500 text-sm">▲ 39.6%</p>
-          </div>
-        </div>
-
-        {/* Row 3 */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500 text-xl">💳</span>
-            <div>
-              <p className="font-semibold">Total Expenses</p>
-              <p className="text-gray-400 text-sm">ADVT, Marketing</p>
-            </div>
-          </div>
-          <div className="text-right">
-            <p className="font-semibold">$430</p>
-            <p className="text-green-500 text-sm">▲ 52.8%</p>
-          </div>
-        </div>
+        ))}
       </div>
 
       {/* Bar Chart */}
-      <div className="flex justify-between mt-8">
-        {chartData.map((h, i) => (
-          <div key={i} className="flex flex-col items-center gap-1">
+      <div className="flex justify-between items-end mt-10 gap-2">
+        {chartData.map((data, i) => (
+          <div key={i} className="flex flex-col items-center gap-1 w-full">
+            {/* Sales Bar */}
             <div
-              className={`w-4 rounded-lg ${
-                i === 4 ? "bg-purple-600" : "bg-purple-200"
-              }`}
-              style={{ height: `${h}px` }}
+              className="w-4 rounded-t-lg bg-purple-600 transition-all duration-300"
+              style={{ height: `${data.sales}px` }}
             ></div>
-            <p className="text-gray-400 text-xs">
-              {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"][i]}
-            </p>
+            {/* Collection Bar */}
+            <div
+              className="w-4 rounded-t-lg bg-green-400 transition-all duration-300 -mt-1"
+              style={{ height: `${data.collection}px` }}
+            ></div>
+            <span className="text-gray-400 text-xs">{data.day}</span>
           </div>
         ))}
       </div>
