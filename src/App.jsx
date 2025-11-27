@@ -8,6 +8,8 @@ import ExpenseCard from "./components/card/ExpenseCard";
 import EarningsReportCard from "./components/card/EarningsReportCard";
 import GeneratedLeadsCard from "./components/card/GeneratedLeadsCard";
 import TransactionsCard from "./components/card/TransactionsCard";
+import "./App.css";
+
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -29,9 +31,12 @@ function App() {
         {/* Content Area */}
         <main className="p-6 flex-1 overflow-y-auto space-y-6">
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2">
             <WelcomeCard />
             <Statistics />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+           
             <ProfitCard />
             <ExpenseCard />
             <GeneratedLeadsCard />

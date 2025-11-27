@@ -9,7 +9,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   ];
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full sidebar-bg">
       <div className="flex items-center justify-between p-4 border-b">
         <h1 className={`text-xl font-bold duration-300 ${sidebarOpen ? "opacity-100" : "opacity-0"}`}>
           Admin
@@ -21,7 +21,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <a
             key={index}
             href="#"
-            className="flex items-center p-4 hover:bg-gray-200 rounded-lg transition-colors"
+            className="flex items-center p-4 rounded-lg transition-colors"
           >
             <span className="text-lg">{item.icon}</span>
             {sidebarOpen && <span className="ml-3">{item.name}</span>}
